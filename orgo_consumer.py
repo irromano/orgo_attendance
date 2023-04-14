@@ -16,8 +16,8 @@ class consumer:
         for _, row in data.iterrows():
             try:
                 if row["Last name, First name"].count(','):
-                    names = row["Last name, First name"].split(',')
-                    stud = student(names[1], names[0])
+                    names = [x.strip() for x in row["Last name, First name"].split(',')]
+                    stud = student(names[1].capitalize(), names[0].capitalize())
                     self._students.append(stud)
                 else:
                     names = row["Last name, First name"].split()
